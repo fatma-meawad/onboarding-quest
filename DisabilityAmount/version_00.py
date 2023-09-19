@@ -25,3 +25,4 @@ def disability_amount(
     # If all conditions are met, calculate the benefit amount based on a formula
     benefit_amount = (income * disability_percentage) / 100
     return benefit_amount
+
