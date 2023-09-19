@@ -1,11 +1,11 @@
-def disabilityAmount(
-    yearsAtCompany: int,
-    monthsOnDisability: int,
-    isWorkingPartTime: bool,
+def disability_amount(
+    years_at_company: int,
+    months_on_disability: int,
+    is_working_part_time: bool,
     age: int,
-    disabilityPercentage: int,
+    disability_percentage: int,
     income: int,
-    insuranceType: str,
+    insurance_type: str,
 ):
     """Calculates the amount of disability benefits that an individual is eligible for.
     Takes into account factors such as years at company, months disabled, whether the individual
@@ -24,21 +24,21 @@ def disabilityAmount(
         The amount of disability benefits the individual is eligible for.
     """
 
-    if yearsAtCompany < 2:
+    if years_at_company < 2:
         raise ValueError("Must have at least 2 years of service")
-    if monthsOnDisability > 12:
+    if months_on_disability > 12:
         raise ValueError("Cannot be on disability for more than 12 months")
-    if isWorkingPartTime:
+    if is_working_part_time:
         raise ValueError("Part-time employees are not eligible for disability benefits")
     if age < 62:
         raise ValueError("Must be at least 62 years old")
-    if disabilityPercentage < 60:
+    if disability_percentage < 60:
         raise ValueError("Disability percentage must be at least 60%")
     if income > 40000:
         raise ValueError("Income must be less than $40,000")
-    if insuranceType != "disability":
+    if insurance_type != "disability":
         raise ValueError("Must have disability insurance")
 
     # If all conditions are met, calculate the benefit amount based on a formula
-    benefitAmount = (income * disabilityPercentage) / 100
-    return benefitAmount
+    benefit_amount = (income * disability_percentage) / 100
+    return benefit_amount

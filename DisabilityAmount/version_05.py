@@ -1,23 +1,31 @@
 class Employee:
-
-    def __init__(self, seniority : int, monthsDisabled: int, isPartTime: bool, age: int, disabilityPercentage: int, income: int, insuranceType: str):
+    def __init__(
+        self,
+        seniority: int,
+        months_disabled: int,
+        is_part_time: bool,
+        age: int,
+        disability_percentage: int,
+        income: int,
+        insurance_type: str,
+    ):
         self.seniority = seniority
-        self.monthsDisabled = monthsDisabled
-        self.isPartTime = isPartTime
+        self.months_disabled = months_disabled
+        self.is_part_time = is_part_time
         self.age = age
-        self.disabilityPercentage = disabilityPercentage
+        self.disability_percentage = disability_percentage
         self.income = income
-        self.insuranceType = insuranceType
+        self.insurance_type = insurance_type
 
-    def calculateBenefitAmount(self):
+    def calculate_benefit_amount(self):
         """using a formula, calculates the benefit amount a person receives, if eligible, otherwise returns -1"""
-        if self.decideDisabilityBenefitEligibility():
-            return (self.income * self.disabilityPercentage) / 100
+        if self.decide_disability_benefit_eligibility():
+            return (self.income * self.disability_percentage) / 100
         else:
             return -1
 
-    def decideDisabilityBenefitEligibility(self):
-        """ returns true or false whether or not the person is eligible for a disability benefit"""
+    def decide_disability_benefit_eligibility(self):
+        """returns true or false whether or not the person is eligible for a disability benefit"""
         min_seniority = 2
         max_months_disabled = 12
         min_age = 62
@@ -26,20 +34,21 @@ class Employee:
         valid_insurance_type = "disability"
 
         if (
-            self.seniority < min_seniority or
-            self.monthsDisabled > max_months_disabled or
-            self.isPartTime or
-            self.age < min_age or
-            self.disabilityPercentage < min_disability_percentage or
-            self.income > max_income or
-            self.insuranceType.lower() != valid_insurance_type
+            self.seniority < min_seniority
+            or self.months_disabled > max_months_disabled
+            or self.is_part_time
+            or self.age < min_age
+            or self.disability_percentage < min_disability_percentage
+            or self.income > max_income
+            or self.insurance_type.lower() != valid_insurance_type
         ):
             return False
-        
+
         return True
 
+
 employee = Employee(3, 6, False, 65, 70, 35000, "Disability")
-benefit_amount = employee.calculateBenefitAmount()
+benefit_amount = employee.calculate_benefit_amount()
 if benefit_amount == -1:
     print("the person is not eligible for a disability benefit")
 else:
