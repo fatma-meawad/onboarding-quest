@@ -11,19 +11,16 @@ def disability_amount(
     Takes into account factors such as seniority, months disabled, whether the individual
     is working part-time, age, disability percentage, income, and insurance type.
     """
-    if seniority < 2:
-        return 0
-    if months_disabled > 12:
-        return 0
-    if is_part_time:
-        return 0
-    if age < 62:
-        return 0
-    if disability_percentage < 60:
-        return 0
-    if income > 40000:
-        return 0
-    if insurance_type != "disability":
+    conditions = [
+        seniority < 2,
+        months_disabled > 12,
+        is_part_time,
+        age < 62,
+        disability_percentage < 60,
+        income > 40000,
+        insurance_type != "disability"
+    ]
+    if any(conditions):
         return 0
     # If all conditions are met, calculate the benefit amount based on a formula
     benefit_amount = (income * disability_percentage) / 100
