@@ -1,5 +1,5 @@
-def calculate_disability_benefit(
-    seniority: int,
+def disability_amount(
+   seniority: int,
     months_disabled: int,
     is_part_time: bool,
     age: int,
@@ -7,16 +7,24 @@ def calculate_disability_benefit(
     income: int,
     insurance_type: str,
 ):
-    if (
-        seniority < 2
-        or months_disabled > 12
-        or is_part_time
-        or age < 62
-        or disability_percentage < 60
-        or income > 40000
-        or insurance_type != "disability"
-    ):
-        return 0
+    """Calculates the amount of disability benefits that an individual is eligible for.
+    Takes into account factors such as seniority, months disabled, whether the individual
+    is working part-time, age, disability percentage, income, and insurance type.
+    """
+    # Define the eligibility conditions
+    eligibility = (
+        seniority >= 2
+        and months_disabled <= 12
+        and not is_part_time
+        and age >= 62
+        and disability_percentage >= 60
+        and income <= 40000
+        and insurance_type == "disability"
+    )
 
-    benefit_amount = (income * disability_percentage) / 100
-    return benefit_amount
+    # If eligible, calculate the benefit amount based on a formula
+    if eligibility:
+        benefit_amount = (income * disability_percentage) / 100
+        return benefit_amount
+
+    return 0
