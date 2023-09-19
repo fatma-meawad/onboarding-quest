@@ -17,13 +17,16 @@ def disabilityPaymentValid(seniority: int, monthsDisabled: int, isPartTime: bool
     MIN_DISABILITY_PERCENTAGE = 59
     MAXIMUM_INCOME = 40001
 
-    if (seniority > MIN_SENIORITY_LEVEL
-        and monthsDisabled < MAX_MONTHS_DISABLED 
-        and not isPartTime 
-        and age > MIN_AGE
-        and disabilityPercentage > MIN_DISABILITY_PERCENTAGE 
-        and income < MAXIMUM_INCOME
-        and insuranceType == "disability"):
+    conditions= [
+        seniority > MIN_SENIORITY_LEVEL,
+        monthsDisabled < MAX_MONTHS_DISABLED ,
+        not isPartTime,
+        age > MIN_AGE,
+        disabilityPercentage > MIN_DISABILITY_PERCENTAGE,
+        income < MAXIMUM_INCOME,
+        insuranceType == "disability" ]
+    
+    if all(conditions):
         return True
     else:
         return False
