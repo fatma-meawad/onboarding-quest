@@ -1,3 +1,5 @@
+# a good exercise would be how to consolidate the conditionals here??
+
 def disability_amount(
     seniority: int,
     months_disabled: int,
