@@ -27,3 +27,5 @@ def get_disability_amount(
     if any(conditions):
         return 0
     return calculate_benefit_amount(income, disability_percentage)
+
+
