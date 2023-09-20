@@ -1,4 +1,4 @@
-def calculate_benefit_amount(income, disability_percentage):
+def calculate_benefit_amount(income: int, disability_percentage: int):
     return (income * disability_percentage) / 100
 
 
@@ -27,4 +27,3 @@ def get_disability_amount(
     if any(conditions):
         return 0
     return calculate_benefit_amount(income, disability_percentage)
-
