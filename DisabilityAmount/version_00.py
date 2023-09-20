@@ -1,4 +1,8 @@
-def disability_amount(
+def calculate_benefit_amount(income, disability_percentage):
+    return (income * disability_percentage) / 100
+
+
+def get_disability_amount(
     seniority: int,
     months_disabled: int,
     is_part_time: bool,
@@ -18,11 +22,9 @@ def disability_amount(
         age < 62,
         disability_percentage < 60,
         income > 40000,
-        insurance_type != "disability"
+        insurance_type != "disability",
     ]
     if any(conditions):
         return 0
-    # If all conditions are met, calculate the benefit amount based on a formula
-    benefit_amount = (income * disability_percentage) / 100
-    return benefit_amount
+    return calculate_benefit_amount(income, disability_percentage)
 
