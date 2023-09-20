@@ -4,13 +4,15 @@ def get_animals_details(animal):
         if "type" in animal:
             if "name" in animal:
                 if "gender" in animal:
-                    result = f"{animal['name']} is a {animal['gender']} {animal['type']}"
+                    result = (
+                        f"{animal['name']} is a {animal['gender']} {animal['type']}"
+                    )
                 else:
-                    result = 'No animal gender'
+                    result = "No animal gender"
             else:
-                result = 'No animal name'
+                result = "No animal name"
         else:
-            result = 'No animal type'
+            result = "No animal type"
     else:
-        result = 'No animal'
+        result = "No animal"
     return result

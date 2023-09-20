@@ -1,10 +1,10 @@
 def get_animals_details(animal):
-
     result = valid_animal(animal)
     if result == True:
         return f"{animal['name']} is a {animal['gender']} {animal['type']}"
     else:
         return result
+
 
 def valid_animal(animal):
     if not animal:
