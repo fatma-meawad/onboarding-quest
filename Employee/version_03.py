@@ -1,17 +1,20 @@
 class Employee:
     def __init__(self, is_dead, is_separated, is_retired):
-        self.isDead = is_dead
-        self.isSeparated = is_separated
-        self.isRetired = is_retired
+        self.state = (
+            is_dead * "DEAD"
+            or is_separated * "SEPARATED"
+            or is_retired * "RETIRED"
+            or "NORMAL"
+        )
+        self.pay_states = {
+            "DEAD": self.calculate_dead_amount,
+            "SEPARATED": self.calculate_separated_amount,
+            "RETIRED": self.calculate_retired_amount,
+            "NORMAL": self.calculate_normal_pay_amount,
+        }
 
     def get_pay_amount(self):
-        if self.isDead:
-            return self.calculate_dead_amount()
-        if self.isSeparated:
-            return self.calculate_separated_amount()
-        if self.isRetired:
-            return self.calculate_retired_amount()
-        return self.calculate_normal_pay_amount()
+        return self.pay_states[self.state]()
 
     def calculate_dead_amount(self):
         # code to calculate the pay amount for a deceased employee

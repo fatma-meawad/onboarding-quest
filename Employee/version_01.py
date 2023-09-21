@@ -13,13 +13,18 @@ class Employee:
         return pay_calculator()
 
     def calculate_dead_amount(self):
+        # Imagine there is code here for calculating the pay amount for a deceased employee
         return 0
 
     def calculate_separated_amount(self):
+        # Imagine there is code here for calculating the pay amount for a separated employee
         return 0
 
     def calculate_retired_amount(self):
+        # Imagine there is code here for calculating the pay amount for a retired employee
         return 0
 
     def calculate_normal_pay_amount(self):
+        # Imagine there is code here for calculating the normal pay amount for an active employee
         return 0
+
