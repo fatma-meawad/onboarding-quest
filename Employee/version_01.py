@@ -9,12 +9,12 @@ class Employee:
         }
 
     def get_pay_amount(self):
-        pay_calculator = self.pay_calculators.get(self.state, self.calculate_normal_pay_amount)
+        pay_calculator = self.pay_calculators.get(self.state)
         return pay_calculator()
 
     def calculate_dead_amount(self):
         # Imagine there is code here for calculating the pay amount for a deceased employee
-        return 0
+        return 1
 
     def calculate_separated_amount(self):
         # Imagine there is code here for calculating the pay amount for a separated employee
